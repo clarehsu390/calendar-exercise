@@ -8,14 +8,16 @@ export default class EventDetailOverlay extends PureComponent {
     static propTypes = {
         event: EVENT_PROP_TYPE.isRequired,
         onClose: PropTypes.func.isRequired,
-        onEsc: PropTypes.func.isRequired
+        onEsc: PropTypes.func.isRequired,
+        onToggle: PropTypes.func.isRequired
     }
 
     componentDidMount() {
-        let {onEsc, onClose} = this.props;
+        let {onEsc, onClose, onToggle} = this.props;
         let calendar = document.querySelector('.calendar')
         document.addEventListener('keydown', onEsc)
         calendar.addEventListener('click', onClose)
+
         
     }
 
@@ -38,11 +40,12 @@ export default class EventDetailOverlay extends PureComponent {
         // TODO: Support clicking outside of the overlay to close it
         // TODO: Support clicking ESC to close it
         return (
-            <section className="event-detail-overlay">
+            <section className="event-detail-overlay" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
                 <div className="event-detail-overlay__container">
                     <button
                         className="event-detail-overlay__close"
                         title="Close detail view"
+                        aria-label="Close Navigation"
                         onClick={onClose}
                     />
                     <div>
