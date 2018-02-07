@@ -5,6 +5,8 @@
 
 .page {
     margin: 1rem;
+    background: linear-gradient(to bottom, #fff, #D3D3D3);
+    
 }
 .page__header {
     margin-bottom: 1rem;
@@ -44,4 +46,12 @@
 }
 .page__next-day::after {
     content: '▶︎';
+}
+
+@media (max-width: 50rem){
+    .no-scroll {
+        overflow: hidden;
+        height: 100%;
+    }
+
 }

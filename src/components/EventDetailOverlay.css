@@ -13,6 +13,8 @@
     box-sizing: border-box;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.25);
+  
+    animation: slideUp 0.8s;
 }
 @media (min-width: 50rem) {
     .event-detail-overlay {
@@ -27,6 +29,7 @@
     box-sizing: border-box;
     box-shadow: 0 0 0.25rem 0 #666;
     border: 1px solid #666;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
     padding: 1rem;
@@ -73,5 +76,43 @@
      * TODO: Figure out how label color can match the event color instead of
      * always being black
      */
-    background-color: #000;
 }
+
+[title~=canary] {
+    background-color:  #fcf69a
+}
+[title~=sky] {
+    background-color: #d1e8f0
+}
+[title~=rose] {
+    background-color: #fcbbd2
+}
+[title~=shamrock] {
+    background-color: #009e60
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(0%);
+      }
+}
+
+/* @keyframes bounceOut {
+    100% {
+        transform: scale(1.1);
+    }
+
+    60% {
+        transform: scale(0.5);
+        opacity: 0.5
+    }
+
+    0% {
+        transform: scale(0.1);
+        opacity: 0
+    }
+} */
