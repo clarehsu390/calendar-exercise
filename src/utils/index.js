@@ -39,10 +39,17 @@ export const filterEventsByHour = (events, hour) => (
  */
 export const getDisplayDate = (timestamp) => {
     let date = new Date(timestamp);
-
+    
     // TODO: Format the date like: "Tuesday, April 11, 2017"
 
-    return date.toString();
+    let options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    return date.toLocaleString('en-us', options);
 };
 
 /**
