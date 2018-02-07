@@ -40,3 +40,6 @@
     background-color: #009e60;
     border-color: #003800;
 }
+.time-slot-event.faded {
+    opacity: 0.5;
+}

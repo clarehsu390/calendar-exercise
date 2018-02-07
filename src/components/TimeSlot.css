@@ -15,6 +15,10 @@
      */
 }
 
+.time-slot:last-child {
+    border-bottom: none;
+}
+
 .time-slot > * {
     display: flex;
     flex-direction: column;
