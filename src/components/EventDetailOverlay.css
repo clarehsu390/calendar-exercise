@@ -74,5 +74,18 @@
      * TODO: Figure out how label color can match the event color instead of
      * always being black
      */
-    background-color: #000;
 }
+
+[title~=canary] {
+    background-color:  #fcf69a
+}
+[title~=sky] {
+    background-color: #d1e8f0
+}
+[title~=rose] {
+    background-color: #fcbbd2
+}
+[title~=shamrock] {
+    background-color: #009e60
+}
+
