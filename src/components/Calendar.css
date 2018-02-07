@@ -6,7 +6,7 @@
     border-radius: 5px;
 }
 
-.calendar.no-scroll {
+.page.no-scroll {
     overflow:hidden;
     position:fixed;
 }

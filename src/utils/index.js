@@ -10,11 +10,13 @@ const _HOUR_DISPLAY_MAP = [
  * @param {Date} timestamp - The timestamp representing the day to match
  * @returns {array}
  */
-export const filterEventsByDay = (events, timestamp) => {
+export const filterEventsByDay = (events, timestamp) => (
     // TODO: Implement day filtering!
-
-    return events;
-}
+   events.filter(({start}) => (
+        (new Date(start).getMonth() === new Date(timestamp).getMonth()) &&
+        (new Date(start).getDate() === new Date(timestamp).getDate())
+     ))
+    );
 
 /**
  * Given a list of events and an hour number, filter the events down to those that

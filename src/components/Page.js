@@ -43,8 +43,8 @@ export default class Page extends PureComponent {
 
     _handleEventDetailOverlayClose() {
         this.setState({selectedEventId: undefined});
-        let calendar = document.querySelector('.calendar')
-        calendar.classList.remove('no-scroll')
+        let page = document.querySelector('.calendar')
+        page.classList.remove('no-scroll')
     }
 
     _handlePrev() {
@@ -64,8 +64,8 @@ export default class Page extends PureComponent {
         let eventDetailOverlay;
 
         if (selectedEvent) {
-           let calendar = document.querySelector('.calendar')
-           calendar.classList.add('no-scroll')
+           let page = document.querySelector('.page')
+           page.classList.add('no-scroll')
             eventDetailOverlay = (
                 <EventDetailOverlay
                     event={selectedEvent}
