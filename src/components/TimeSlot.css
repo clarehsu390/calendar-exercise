@@ -14,26 +14,20 @@
      * which causes a double border
      */
 }
-
-.time-slot:last-child {
-    border-bottom: none;
-}
-
-.time-slot > * {
-    display: flex;
-    flex-direction: column;
-}
-
 .time-slot__hour-label {
     width: 4rem;
     text-align: right;
     border-right: 1px solid #666;
     padding: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .time-slot__events {
     padding: 0.5rem;
     flex: 1;
+
     overflow: hidden;
 }
 .time-slot__event {
@@ -41,17 +35,6 @@
     max-width: 100%;
 }
 
-.time-slot-event {
-    width: 100%;
-}
-
-
 @media screen and (min-width: 50rem) {
     /* Override styles for larger screens here */
-    .time-slot__events {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        
-    }
 }

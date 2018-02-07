@@ -7,22 +7,11 @@ import './EventDetailOverlay.css';
 export default class EventDetailOverlay extends PureComponent {
     static propTypes = {
         event: EVENT_PROP_TYPE.isRequired,
-        onClose: PropTypes.func.isRequired,
-        onEsc: PropTypes.func.isRequired,
-        onToggle: PropTypes.func.isRequired
-    }
-
-    componentDidMount() {
-        let {onEsc, onClose, onToggle} = this.props;
-        let calendar = document.querySelector('.calendar')
-        document.addEventListener('keydown', onEsc)
-        calendar.addEventListener('click', onClose)
-
-        
+        onClose: PropTypes.func.isRequired
     }
 
     render() {
-        let {event, onClose, onEsc} = this.props;
+        let {event, onClose} = this.props;
         let {title, description, start, color, hours} = event;
         let displayDate = getDisplayDate(start);
         let startHour = (new Date(start)).getHours();
@@ -40,12 +29,11 @@ export default class EventDetailOverlay extends PureComponent {
         // TODO: Support clicking outside of the overlay to close it
         // TODO: Support clicking ESC to close it
         return (
-            <section className="event-detail-overlay" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+            <section className="event-detail-overlay">
                 <div className="event-detail-overlay__container">
                     <button
                         className="event-detail-overlay__close"
                         title="Close detail view"
-                        aria-label="Close Navigation"
                         onClick={onClose}
                     />
                     <div>
