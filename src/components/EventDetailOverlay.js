@@ -7,11 +7,20 @@ import './EventDetailOverlay.css';
 export default class EventDetailOverlay extends PureComponent {
     static propTypes = {
         event: EVENT_PROP_TYPE.isRequired,
-        onClose: PropTypes.func.isRequired
+        onClose: PropTypes.func.isRequired,
+        onEsc: PropTypes.func.isRequired
+    }
+
+    componentDidMount() {
+        let {onEsc, onClose} = this.props;
+        let calendar = document.querySelector('.calendar')
+        document.addEventListener('keydown', onEsc)
+        calendar.addEventListener('click', onClose)
+        
     }
 
     render() {
-        let {event, onClose} = this.props;
+        let {event, onClose, onEsc} = this.props;
         let {title, description, start, color, hours} = event;
         let displayDate = getDisplayDate(start);
         let startHour = (new Date(start)).getHours();

@@ -37,14 +37,28 @@ export default class Page extends PureComponent {
         selectedEventId: undefined
     }
 
+    removeNoScroll() {
+        //remove class so calendar is scrollable once overlay is closed
+        let page = document.querySelector('body')
+            page.classList.remove('no-scroll')
+    }
+
     _handleSelectEvent(selectedEventId) {
         this.setState({selectedEventId});
     }
 
-    _handleEventDetailOverlayClose() {
+    
+    _handleEventDetailOverlayClose(e) {
         this.setState({selectedEventId: undefined});
-        let page = document.querySelector('body')
-        page.classList.remove('no-scroll')
+        this.removeNoScroll();
+    }
+
+    _handleKeyDown(e) {
+        //close overlay on ESC
+        if (e.keyCode === 27) {
+            this.setState({selectedEventId: undefined})
+        }
+        this.removeNoScroll();
     }
 
     _handlePrev() {
@@ -70,6 +84,7 @@ export default class Page extends PureComponent {
                 <EventDetailOverlay
                     event={selectedEvent}
                     onClose={this._handleEventDetailOverlayClose.bind(this)}
+                    onEsc={this._handleKeyDown.bind(this)}
                 />
             );
         }
