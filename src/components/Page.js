@@ -43,14 +43,18 @@ export default class Page extends PureComponent {
 
     _handleEventDetailOverlayClose() {
         this.setState({selectedEventId: undefined});
+        let calendar = document.querySelector('.calendar')
+        calendar.classList.remove('no-scroll')
     }
 
     _handlePrev() {
         // TODO: Update this.state.day to go back 1 day so previous button works
+        this.setState({day: this.state.day - 86400000})
     }
 
     _handleNext() {
         // TODO: Update this.state.day to go forward 1 day so next button works
+        this.setState({day: this.state.day + 86400000})
     }
 
     render() {
@@ -60,6 +64,8 @@ export default class Page extends PureComponent {
         let eventDetailOverlay;
 
         if (selectedEvent) {
+           let calendar = document.querySelector('.calendar')
+           calendar.classList.add('no-scroll')
             eventDetailOverlay = (
                 <EventDetailOverlay
                     event={selectedEvent}
