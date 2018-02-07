@@ -10,11 +10,13 @@ const _HOUR_DISPLAY_MAP = [
  * @param {Date} timestamp - The timestamp representing the day to match
  * @returns {array}
  */
-export const filterEventsByDay = (events, timestamp) => {
+export const filterEventsByDay = (events, timestamp) => (
     // TODO: Implement day filtering!
-
-    return events;
-}
+   events.filter(({start}) => (
+        (new Date(start).getMonth() === new Date(timestamp).getMonth()) &&
+        (new Date(start).getDate() === new Date(timestamp).getDate())
+     ))
+    );
 
 /**
  * Given a list of events and an hour number, filter the events down to those that
@@ -37,10 +39,17 @@ export const filterEventsByHour = (events, hour) => (
  */
 export const getDisplayDate = (timestamp) => {
     let date = new Date(timestamp);
-
+    
     // TODO: Format the date like: "Tuesday, April 11, 2017"
 
-    return date.toString();
+    let options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    return date.toLocaleString('en-us', options);
 };
 
 /**
@@ -49,7 +58,12 @@ export const getDisplayDate = (timestamp) => {
  * @returns {string}
  */
 // TODO: Implement using a more programmatic approach instead of map
-export const getDisplayHour = (hour) => _HOUR_DISPLAY_MAP[hour]
+export const getDisplayHour = (hour) => {
+   let ampm = hour < 12 ? 'AM' : 'PM';
+   let displayHour = hour % 12;
+   displayHour = displayHour ? displayHour : 12;
+   return displayHour + ampm;
+};
 
 /**
  * Given a list of events, returns the event object whose id matches the specified eventId
